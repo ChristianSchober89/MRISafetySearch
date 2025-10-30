@@ -1,0 +1,5 @@
+{
+  "name": "MRI Safety Search",
+  "description": "A search engine powered by Gemini to provide up-to-date MRI safety information for medical implants, grounded with Google Search for accuracy.",
+  "requestFramePermissions": []
+}
