@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Run and deploy your AI Studio app (updated)
 
-# Run and deploy your AI Studio app
+This repo has a frontend React app and a small backend proxy to call Google Gemini (Gemini API).
+Do NOT embed your Gemini API key into the client. Run the provided server locally or deploy it server-side.
 
-This contains everything you need to run your app locally.
+Prerequisites:
+- Node.js
 
-View your app in AI Studio: https://ai.studio/apps/drive/1RnfyvBqBsgrGk_Ua_JrOEG8owJ4b67ka
+1. Install dependencies (frontend + backend):
+   npm install
 
-## Run Locally
+2. Start the Gemini proxy server (in one terminal)
+   - Set GEMINI_API_KEY in your environment:
+     export GEMINI_API_KEY="your_gemini_api_key"
+   - Start server:
+     node server.js
+   (Server listens on port 3001 by default. You can set PORT env var.)
 
-**Prerequisites:**  Node.js
+3. Start the frontend (in another terminal)
+   npm run dev
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Notes:
+- The frontend calls POST /api/search — in local dev if your frontend runs on a different port set up a proxy in your dev server or use CORS.
+- For production deploy the backend to a secure serverless function or server (e.g., Vercel Serverless Function / Heroku / Render) and point the frontend to that endpoint.
+- Do NOT place GEMINI_API_KEY or any secret into client-side code.
